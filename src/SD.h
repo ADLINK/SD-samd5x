@@ -135,8 +135,8 @@ using namespace SDLib;
 
 // This allows sketches to use SDLib::File with other libraries (in the
 // sketch you must use SDFile instead of File to disambiguate)
-typedef SDLib::File    SDFile2;
-typedef SDLib::SDClass SDFileSystemClass;
-#define SDFileSystem   SDLib::SD
+typedef SDLib::File    SDHCFile;
+typedef SDLib::SDClass SDHCFileSystemClass;
+#define SDHCFileSystem   SDLib::SD
 
 #endif
