@@ -50,7 +50,7 @@
 
 */
 
-#include "SD.h"
+#include "SD-samd5x.h"
 
 namespace SDLib {
 
