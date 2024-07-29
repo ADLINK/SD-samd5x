@@ -2,40 +2,32 @@
   SD card read/write
 
   This example shows how to read and write data to and from an SD card file
-  The circuit. Pin numbers reflect the default
-  SPI pins for Uno and Nano models:
-   SD card attached to SPI bus as follows:
- ** SDO - pin 11
- ** SDI - pin 12
- ** CLK - pin 13
- ** CS - pin 4 (For For Uno, Nano: pin 10. For MKR Zero SD: SDCARD_SS_PIN)
 
   created   Nov 2010
   by David A. Mellis
   modified  24 July 2020
   by Tom Igoe
+  modified 29 July 2024
+  by Joey Haas <joey.haas@adlinktech.com>
 
   This example code is in the public domain.
-
 */
-#include <SD.h>
+#include <SD-samd5x.h>
 
-const int chipSelect = 10;
 File myFile;
 
 void setup() {
   // Open serial communications and wait for port to open:
-  Serial.begin(9600);
+  Serial.begin(115200);
   // wait for Serial Monitor to connect. Needed for native USB port boards only:
   while (!Serial);
 
   Serial.print("Initializing SD card...");
 
-  if (!SD.begin(chipSelect)) {
+  if (!SD.begin()) {
     Serial.println("initialization failed. Things to check:");
     Serial.println("1. is a card inserted?");
     Serial.println("2. is your wiring correct?");
-    Serial.println("3. did you change the chipSelect pin to match your shield or module?");
     Serial.println("Note: press reset button on the board and reopen this Serial Monitor after fixing your issue!");
     while (true);
   }
