@@ -1,7 +1,7 @@
 #ifndef SD_BLOCK_DEVICE_H
 #define SD_BLOCK_DEVICE_H
 
-#include "sdiocard/sdcard.h"
+#include "sdcard/sdcard.h"
 
 #ifdef __cplusplus
 extern "C" {

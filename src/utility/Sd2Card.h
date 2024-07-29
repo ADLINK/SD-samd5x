@@ -24,7 +24,7 @@
    Sd2Card class
 */
 #include "sd_block_device.h"
-#include "sdiocard/sdcard.h"
+#include "sdcard/sdcard.h"
 #include "sdhc/sdhc.h"
 #include "SdInfo.h"
 
