@@ -6,18 +6,18 @@ The SD class provides functions for accessing the SD card and manipulating its f
 
 ### `begin()`
 
-Initializes the SD library and card. This begins use of the SPI bus (digital pins 11, 12, and 13 on most Arduino boards; 50, 51, and 52 on the Mega) and the chip select pin, which defaults to the hardware SS pin (pin 10 on most Arduino boards, 53 on the Mega). Note that even if you use a different chip select pin, **the hardware SS pin must be kept as an output or the SD library functions will not work**.
+Initializes the SD library and card. This begins use of the SDHC peripheral on 3.3V signaling at 25MHz (Max 100Mbit/s). If `true` is passed for the `high_speed` parameter, it will switch to 50MHz rate(Max 200MBit/s) during the initialization process.
 
 #### Syntax 
 
 ```
 SD.begin()
-SD.begin(cspin)
+SD.begin(high_speed)
 ```
 
 #### Parameters
 
-* `cspin` (optional): the pin connected to the chip select line of the SD card; defaults to the hardware SS line of the SPI bus.
+* `high_speed` (optional): switches to high speed mode at the end of the initialization process.
 
 #### Returns
 
@@ -659,10 +659,11 @@ file.isDirectory()
 File root;
 
 void setup() {
-  Serial.begin(9600);
-  pinMode(10, OUTPUT);
+  Serial.begin(115200);
+  // wait for Serial Monitor to connect. Needed for native USB port boards only:
+  while (!Serial);
 
-  SD.begin(10);
+  SD.begin();
   root = SD.open("/");
   printDirectory(root, 0);
   Serial.println("Done!");
@@ -832,9 +833,11 @@ None.
 File root;
 
 void setup() {
-  Serial.begin(9600);
-  pinMode(10, OUTPUT);
-  SD.begin(10);
+  Serial.begin(115200);
+  // wait for Serial Monitor to connect. Needed for native USB port boards only:
+  while (!Serial);
+
+  SD.begin();
   root = SD.open("/");
   printDirectory(root, 0);
   Serial.println();
